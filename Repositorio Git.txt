@@ -1,0 +1,69 @@
+Comandos Git:
+Após criar o gitignore.txt(cria um txt e renomeia pelo prompt com shift rightclick "ren nome.txt .gitignore")
+
+Para criar o repositório:
+git init
+
+Para setar user name:
+git config --global user.name "NOME AQUI"
+
+Para setar o email:
+git config --global user.email "email"
+
+Ver status:
+git status 
+
+"Preparar" files pra commitar:
+git add .
+
+Commit:
+git commit -m "Mensagem da mudança"
+
+Ver log de commits:
+git log
+
+Ver log de commits simples:
+git log --oneline
+
+Esqueceu de colocar mensagem no commit:
+Aperta ESC e digita :q! tecle ENTER
+
+Voltar pro state do ultimo commit feito:
+git clean -df
+git checkout -- .
+
+Como desfazer um commit SEM DESFAZER AS ALTERAÇÕES DELE:
+git reset --soft HEAD~1
+
+Como desfazer um commit DESFAZENDO AS ALTERAÇÕES DELE (CUIDADO):
+git reset --hard HEAD~1
+
+Visualizar commits anteriores(git status tem que estar vazio):
+git checkout CódigoDoCommit
+
+Voltar para o ultimo commit feito(exemplo de branch: master):
+git checkout NomeDoBranch
+
+Associar o repositório remoto(GitHub) ao repositório local:
+git remote add origin <URI do repositório remoto>
+
+Associar o rep. local a outro repositório remoto mantendo o apelido:
+git remote set-url origin <URI do repositório remoto>
+
+Upar o rep. Local para o GitHub(A PRIMEIRA VEZ):
+git push -u origin master
+
+Upar o rep. local para o gitHub depois de ja linkados:
+git push
+
+Copiar rep. remoto para o seu computador:
+git clone <URI do repositório remoto>
+
+ATUALIZAR seu rep. Local:
+git pull origin master
+
+
+
+
+
+
