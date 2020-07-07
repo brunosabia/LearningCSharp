@@ -24,7 +24,7 @@ namespace Composition.Entities
         }
 
         //methods
-        public double totalValue()
+        public double TotalValue()
         {
             return Hours * ValuePerHour;
         }
