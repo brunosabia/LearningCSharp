@@ -17,6 +17,8 @@ namespace Polimorfismo
 
                 Console.WriteLine(emp1.Payment());
             Console.WriteLine(emp2.Payment());
+
+
             */ 
 
 
