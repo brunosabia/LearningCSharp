@@ -10,13 +10,13 @@ namespace _48_Interface.Services
         public double PricePerHour { get; private set; }
         public double PricePerDay { get; private set; }
 
-        //Fazendo uma dependencia de uma forma NÃO RECOMENDADA
-        private BrazilTaxService _brazilTaxService = new BrazilTaxService();
+        public ITaxService _taxService;
 
-        public RentalService(double pricePerHour, double pricePerDay)
+        public RentalService(double pricePerHour, double pricePerDay,ITaxService taxService)
         {
             PricePerHour = pricePerHour;
             PricePerDay = pricePerDay;
+            _taxService = taxService;
         }
 
 
@@ -36,7 +36,7 @@ namespace _48_Interface.Services
             {
                 basicPayment = PricePerDay * Math.Ceiling(duration.TotalDays);
             }
-            double tax = _brazilTaxService.Tax(basicPayment);
+            double tax = _taxService.Tax(basicPayment);
 
             carRental.Invoice = new Invoice(basicPayment, tax);
         }
