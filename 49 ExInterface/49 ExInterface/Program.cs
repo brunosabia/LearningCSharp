@@ -13,16 +13,17 @@ namespace _49_ExInterface
             Console.Write("Number: ");
             int number = int.Parse(Console.ReadLine());
             Console.Write("Date (dd/MM/yyyy): ");
-            DateTime date = DateTime.ParseExact(Console.ReadLine(),"dd/MM/yyyy",CultureInfo.InvariantCulture);
+            DateTime date = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
             Console.Write("Contract Value: ");
-            double amount = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
+            double amount = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             Console.Write("Enter the number of installments: ");
-            int quantity = int.Parse(Console.ReadLine());
+            int months = int.Parse(Console.ReadLine());
 
-            Contract contract = new Contract(number, date, amount, quantity, new PaypalService());
-            contract.addInstallments();
-            contract.printList();
-           
+            Contract contract = new Contract(number, date, amount, months);
+
+            PaymentService paymentservice = new PaymentService();
+
+            paymentservice.ProcessPayment(contract,new PaypalService());
         }
     }
 }

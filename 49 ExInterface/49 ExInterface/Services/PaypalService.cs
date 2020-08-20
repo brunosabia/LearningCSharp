@@ -4,16 +4,23 @@ using System.Text;
 
 namespace _49_ExInterface.Services
 {
-    class PaypalService : IPaymentService
+    class PaypalService : IOnlinePaymentService
     {
-        public double Installment(double amount, int quantity)
+        private double InterestValue = 0.01;
+
+        private double PaymentFeeValue = 0.02;
+
+
+        public double Interest(double amount, int months)
         {
-            double total = amount * 0.01 * quantity;
-            amount += total;
-            amount += amount * 0.02;
-
-            return amount;
-
+            return amount * InterestValue * months;
         }
+
+
+        public double PaymentFee(double amount)
+        {
+            return amount * PaymentFeeValue;
+        }
+
     }
 }

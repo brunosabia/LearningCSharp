@@ -15,43 +15,22 @@ namespace _49_ExInterface.Entities
         public double TotalValue { get; set; }
 
         public List<Installment> list = new List<Installment>();
-        public int Quantity { get; set; }
-        public IPaymentService _paymentService { get; set; }
+        public int Months { get; set; }
 
 
-        public Contract(int number, DateTime date, double totalValue,int quantity, IPaymentService paymentService)
+        public Contract(int number, DateTime date, double totalValue,int months)
         {
             Number = number;
             Date = date;
             TotalValue = totalValue;
-            Quantity = quantity;
-            _paymentService = paymentService;
-
+            Months = months;
 
         }
 
-        public void addInstallments()
+        public void addInstallments(Installment installment)
         {
-            double value = TotalValue / Quantity;
-            for (int i = 1; i <= Quantity; i++)
-            {
-                DateTime dueDate = Date.AddMonths(i);
-                double amount = _paymentService.Installment(value, i);
-                list.Add(new Installment(dueDate, amount ));
-                value = TotalValue / Quantity;
-            }
+            list.Add(installment);
         }
-
-        public void printList()
-        {
-            foreach (Installment item in list)
-            {
-                Console.WriteLine(item.DueDate.ToString("dd/MM/yyyy") + " - " + item.Amount.ToString("F2",CultureInfo.InvariantCulture));
-            }
-        }
-
-
-
 
     }
 }
