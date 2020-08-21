@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _50_InterfaceAndAbstract.Model.Entities
 {
-    class Rectangle : Shape
+    class Rectangle : AbstractShape
     {
         public double Width { get; set; }
         public double Height { get; set; }

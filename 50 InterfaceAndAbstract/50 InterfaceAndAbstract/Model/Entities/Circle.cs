@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _50_InterfaceAndAbstract.Model.Entities
 {
-    class Circle : Shape
+    class Circle : AbstractShape
     {
         public double Radius { get; set; }
 
