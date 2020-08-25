@@ -5,7 +5,7 @@ using System.Text;
 
 namespace _52_IComparable.Entities
 {
-    class Employee
+    class Employee : IComparable
     {
         public string Name { get; set; }
         public double Salary { get; set; }
@@ -21,6 +21,16 @@ namespace _52_IComparable.Entities
         public override string ToString()
         {
             return Name + ", " + Salary.ToString("F2", CultureInfo.InvariantCulture);
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (!(obj is Employee))
+            {
+                throw new ArgumentException("Comparing error: argument is not an Employee");
+            }
+            Employee other = obj as Employee;
+            return Name.CompareTo(other.Name);
         }
     }
 }
