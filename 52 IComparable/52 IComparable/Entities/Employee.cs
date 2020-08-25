@@ -30,7 +30,7 @@ namespace _52_IComparable.Entities
                 throw new ArgumentException("Comparing error: argument is not an Employee");
             }
             Employee other = obj as Employee;
-            return Name.CompareTo(other.Name);
+            return Salary.CompareTo(other.Salary);
         }
     }
 }
