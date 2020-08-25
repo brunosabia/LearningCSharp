@@ -19,6 +19,7 @@ namespace _51_MultipleInheritance
             //Se ComboDevice herdasse da classe Scanner e Printer por eles terem seus respectivos ProcessDocs, ocorreria um erro.
             //Por esta razão é necessário criar duas interfaces separadamente para criar um contrato que os métodos Scan e Print sejam devidamente criados
            
+
             ComboDevice c = new ComboDevice() { SerialNumber = 3921 };
             c.ProcessDoc("My dissertation");
             c.Print("My dissertation");
