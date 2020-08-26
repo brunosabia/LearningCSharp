@@ -6,11 +6,11 @@ namespace _53_Generics
 {
     class PrintService
     {
-        private int[] _values = new int[10];
+        private object[] _values = new object[10];
 
         private int _count = 0;
 
-        public void AddValue(int value)
+        public void AddValue(object value)
         {
             if(_count == 10)
             {
@@ -21,7 +21,7 @@ namespace _53_Generics
             _count++;
         }
     
-        public int First()
+        public object First()
         {
             if (_count == 0)
             {
