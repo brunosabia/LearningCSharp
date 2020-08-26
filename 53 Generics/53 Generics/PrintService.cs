@@ -4,13 +4,15 @@ using System.Text;
 
 namespace _53_Generics
 {
-    class PrintService
+
+    //no nome da classe é adicionado o <T>(ou qualquer outra letra) para declarar que o tipo sera recebido por parametro na hora da instanciacao da classe
+    class PrintService<T>
     {
-        private object[] _values = new object[10];
+        private T[] _values = new T[10];
 
         private int _count = 0;
 
-        public void AddValue(object value)
+        public void AddValue(T value)
         {
             if(_count == 10)
             {
@@ -21,7 +23,7 @@ namespace _53_Generics
             _count++;
         }
     
-        public object First()
+        public T First()
         {
             if (_count == 0)
             {

@@ -6,7 +6,8 @@ namespace _53_Generics
     {
         static void Main(string[] args)
         {
-            PrintService printService = new PrintService();
+            //na hora da instanciação vc passa o tipo dos dados que serão usados na classe instanciada
+            PrintService<int> printService = new PrintService<int>();
 
             Console.Write("How many values? ");
             int n = int.Parse(Console.ReadLine());
