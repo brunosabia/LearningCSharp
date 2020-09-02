@@ -1,48 +1,45 @@
-﻿using _59_ExSet.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace _59_ExSet
+namespace Course
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Course A = new Course();
-            Course B = new Course();
-            Course C = new Course();
-            Course Total = new Course();
 
-            Console.Write("How many students for course A?");
+            HashSet<int> courseA = new HashSet<int>();
+            HashSet<int> courseB = new HashSet<int>();
+            HashSet<int> courseC = new HashSet<int>();
+
+            Console.Write("How many students for course A? ");
             int n = int.Parse(Console.ReadLine());
             for (int i = 0; i < n; i++)
             {
-                int code = int.Parse(Console.ReadLine());
-                A.addUser(code);
-                Total.addUser(code);
+                int cod = int.Parse(Console.ReadLine());
+                courseA.Add(cod);
             }
 
-            Console.Write("How many students for course B?");
-            int m = int.Parse(Console.ReadLine());
-            for (int i = 0; i < m; i++)
+            Console.Write("How many students for course B? ");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-                int code = int.Parse(Console.ReadLine());
-                B.addUser(code);
-                Total.addUser(code);
+                int cod = int.Parse(Console.ReadLine());
+                courseB.Add(cod);
             }
 
-            Console.Write("How many students for course C?");
-            int k = int.Parse(Console.ReadLine());
-            for (int i = 0; i < k; i++)
+            Console.Write("How many students for course C? ");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i < n; i++)
             {
-                int code = int.Parse(Console.ReadLine());
-                C.addUser(code);
-                Total.addUser(code);
+                int cod = int.Parse(Console.ReadLine());
+                courseC.Add(cod);
             }
 
-            Console.WriteLine("Total students: " + Total.Count());
-
-       
+            HashSet<int> all = new HashSet<int>(courseA);
+            all.UnionWith(courseB);
+            all.UnionWith(courseC);
+            Console.WriteLine("Total students: " + all.Count);
         }
     }
 }
