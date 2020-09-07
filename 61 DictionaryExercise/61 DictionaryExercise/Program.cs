@@ -28,7 +28,7 @@ namespace _61_DictionaryExercise
 
                     if (vote.ContainsKey(candidate))
                     {
-
+                        //no dictionary 'vote', na key 'candidate' acrescentar o number.
                         vote[candidate] += number;
                     }
                     else
