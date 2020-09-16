@@ -25,6 +25,7 @@ namespace _67_Action
             Action<Product> act = p => { p.Price += p.Price * 0.1; };
 
 
+
             list.ForEach(act);
 
             //a linha acima tambem pode ser feita diretamente:
