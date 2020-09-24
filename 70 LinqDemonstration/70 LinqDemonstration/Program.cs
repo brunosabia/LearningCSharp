@@ -77,6 +77,58 @@ namespace _70_LinqDemonstration
             //teste com id inexistente
             var r9 = products.Where(p => p.ID == 30).SingleOrDefault();
             Console.WriteLine("Single or default test2: " + r9);
+
+            //Atribui apenas o maior preco dos produtos da lista
+            var r10 = products.Max(p => p.Price);
+            Console.WriteLine("Max Price: " + r10);
+
+            //Atribui apenas o menor preco dos produtos da lista
+            var r11 = products.Min(p => p.Price);
+            Console.WriteLine("Min Price: " + r11);
+
+            //Soma dos precos dos produtos de categoria 1:
+            var r12 = products.Where(p => p.Category.ID == 1).Sum(p => p.Price);
+            Console.WriteLine("Category 1 Sum Prices: " + r12);
+
+            //Média dos precos dos produtos de categoria 1:
+            var r13 = products.Where(p => p.Category.ID == 1).Average(p => p.Price);
+            Console.WriteLine("Category 1 Average Prices: " + r13);
+
+            //Esquema para tornar mais segura uma operação CASO exista o risco dela retornar null e crashar
+            //vc seleciona no caso uma categoria inexistente. logo o r14 ficaria vazio.
+            //vc seleciona apenas o atributo desejado para a média com o Select.
+            //Cria o DefaultIfEmpty para setar um valor default  e evitar um crash execução
+            //E por fim executa o Average sem precisar passar nem argumentos pois o select já separou apenas os prices (Double)
+            var r14 = products.Where(p => p.Category.ID == 5).Select(p => p.Price).DefaultIfEmpty(0.0).Average();
+            Console.WriteLine("Category 5 Average Prices: " + r14);
+
+
+            //Criando uma operação PERSONALIZADA utilizando o aggregate
+            //o select separa todos os produtos com ID 1 e Seleciona apenas os Preços deles.
+            // E o Aggregate pega um preco e soma com o outro. resultando na Soma de todos 
+            // Caso os valores passados a r15 sejam zero ou null daria um erro, entao é colocado um parametro em Aggregate como valor Default(0.0)
+            var r15 = products.Where(p => p.Category.ID == 1).Select(p => p.Price).Aggregate(0.0,(x,y) => x + y);
+            Console.WriteLine("Category 1 Aggregate SUM: "+ r15);
+
+            Console.WriteLine();
+
+            //Agrupando os produtos pela categoria
+            var r16 = products.GroupBy(p => p.Category);
+            //o foreach desse agrupamento é diferente pois o r16 se torna um IGrouping<Chave, Valor>
+            //para cada categoria imprimir o nome dela  (key == Category)
+            //o segundo foreach vai imprimir cada produto de cada grupo de categoria
+            foreach (IGrouping<Category,Product> group in r16)
+            {
+                Console.WriteLine("Category " + group.Key.Name + ":");
+
+                foreach (Product p in group)
+                {
+                    Console.WriteLine(p);
+                }
+                Console.WriteLine();
+            }
+
+
         }
     }
 }
