@@ -15,6 +15,10 @@ namespace Introduction_ASP.NET_MVC
                 -Controllers
                 -Views
                 -Models
+
+
+            Comandos SQL:
+
             */
         }
     }
